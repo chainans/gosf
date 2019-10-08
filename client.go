@@ -58,3 +58,10 @@ func (c *Client) Broadcast(room string, endpoint string, message *Message) {
 	c.channel.BroadcastTo(room, endpoint, message)
 	emit("after-client-broadcast", c, room, endpoint, message)
 }
+
+func (c *Client) Equals(o *Client) bool {
+	if c.channel == o.channel {
+		return true
+	}
+	return false
+}
